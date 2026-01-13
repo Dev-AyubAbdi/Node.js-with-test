@@ -5,6 +5,8 @@ const PORT = process.env.PORT || 2000
 import mongoose from "mongoose";
 dotenv.config()
 import getUser from './routes/user.js'
+import { errorHandler } from "./middlewares/errorHandler.js";
+import { notFound } from "./middlewares/notFound.js";
 
 app.use(express.json());
 
@@ -12,6 +14,9 @@ app.get("/", (req, res) => {
   res.json("hello world");
 });
 app.use('/create', getUser )
+app.use(notFound)
+
+app.use(errorHandler)
 
 mongoose.connect(process.env.MONGO_URI)
     .then(()=> console.log("✅ Connected Locally"))
