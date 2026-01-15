@@ -12,6 +12,7 @@ import userAuth from "./routes/authRegister.js";
 import UserLoggin from "./routes/authRegister.js";
 import AdminDashboard from './routes/authorized.js'
 import uploadFile from './routes/upload.js'
+import taskRouter from './routes/task.js'
 
 app.use(express.json());
 
@@ -23,6 +24,7 @@ app.use("/user", userAuth);
 app.use("/sigin", UserLoggin);
 app.use("/admin", AdminDashboard);
 app.use("/upload", uploadFile);
+app.use("/task", taskRouter);
 app.use(notFound);
 
 app.use(errorHandler);
