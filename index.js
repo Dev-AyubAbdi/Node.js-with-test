@@ -10,6 +10,7 @@ import { notFound } from "./middlewares/notFound.js";
 
 import userAuth from "./routes/authRegister.js";
 import UserLoggin from "./routes/authRegister.js";
+import AdminDashboard from './routes/authorized.js'
 
 app.use(express.json());
 
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 app.use("/create", getUser);
 app.use("/user", userAuth);
 app.use("/sigin", UserLoggin);
+app.use("/admin", AdminDashboard);
 app.use(notFound);
 
 app.use(errorHandler);
